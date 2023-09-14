@@ -80,7 +80,6 @@ public:
         this->preprocess_ = preprocess;
         this->fromCalibratorData_ = false;
         this->files_.resize(dims.d[0]);
-        this->files_.resize(2);
 	}
     MyInt8EntropyCalibrator2(const std::vector<uint8_t>& entropyCalibratorData, nvinfer1::Dims dims, const Int8Process& preprocess)
     {
@@ -138,8 +137,7 @@ public:
 private:
     bool next()
     {
-        //int& batch_size = this->dims_.d[0];
-        int batch_size = 2;
+        int& batch_size = this->dims_.d[0];
         if (this->cursor_ + batch_size > this->allimgs_.size())
             return false;
 
